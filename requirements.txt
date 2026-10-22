@@ -1,0 +1,6 @@
+# Python 3.9-3.11 (textworld's jericho dependency fails to build on 3.12+)
+alfworld==0.4.2
+textworld==1.7.0
+litellm>=1.50
+tenacity  # litellm needs it for num_retries but doesn't install it
+rank_bm25  # ReasoningBank "skillos" variant
