@@ -17,12 +17,15 @@ from dataclasses import dataclass, field
 class Usage:
     calls: int = 0
     prompt_tokens: int = 0
-    completion_tokens: int = 0
+    completion_tokens: int = 0  # includes thinking tokens
+    reasoning_tokens: int = 0   # thinking tokens alone, if the provider reports them
+    truncated: int = 0          # replies cut off by max_tokens (thinking counts toward it)
     cost_usd: float = 0.0
 
     def snapshot(self) -> dict:
         return dict(calls=self.calls, prompt_tokens=self.prompt_tokens,
-                    completion_tokens=self.completion_tokens, cost_usd=round(self.cost_usd, 6))
+                    completion_tokens=self.completion_tokens, reasoning_tokens=self.reasoning_tokens,
+                    truncated=self.truncated, cost_usd=round(self.cost_usd, 6))
 
     def diff(self, before: dict) -> dict:
         now = self.snapshot()
@@ -56,6 +59,10 @@ class LLM:
         if u is not None:
             self.usage.prompt_tokens += getattr(u, "prompt_tokens", 0) or 0
             self.usage.completion_tokens += getattr(u, "completion_tokens", 0) or 0
+            details = getattr(u, "completion_tokens_details", None)
+            self.usage.reasoning_tokens += getattr(details, "reasoning_tokens", 0) or 0
+        if resp.choices[0].finish_reason == "length":
+            self.usage.truncated += 1
         try:
             self.usage.cost_usd += self._litellm.completion_cost(completion_response=resp) or 0.0
         except Exception:

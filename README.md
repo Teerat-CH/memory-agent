@@ -47,6 +47,7 @@ python run.py --model gemini/gemini-3.8-flash --memory exp_recent --memory-args 
 - `--limit N`: run only the first N tasks.
 - `--seed`: sets the task order. Keep it fixed across methods.
 - `--max-steps`: the step limit per task (default 30, as in SkillOS).
+- `--temperature`: the agent's sampling temperature (default 0). Google [recommends 1.0](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/gemini-3-prompting-guide) for Gemini 3 models and warns that lower values can cause looping or worse reasoning. Memory methods set their own temperatures (ReasoningBank: judge 0, extractor 1.0).
 - `--split`: `valid_seen` (default, 140 tasks, as in SkillOS) or `valid_unseen` (134 tasks, as in ReAct and Evo-Memory). "Seen" means the rooms also appear in the training split; with no training, both are just test sets.
 - `--memory`: pick by name from `MEMORIES` in `run.py`.
 
