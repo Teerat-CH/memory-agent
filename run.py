@@ -36,9 +36,12 @@ def main():
     p.add_argument("--temperature", type=float, default=0.0,
                    help="agent sampling temperature; Google recommends 1.0 for Gemini 3 models")
     p.add_argument("--thinking", default=None, choices=["minimal", "low", "medium", "high"],
-                   help="Gemini 3 thinking level (sent as litellm's reasoning_effort); omit to use the model's default")
+                   help="Gemini 3 thinking level (sent as litellm's reasoning_effort); omit to use the model's default. "
+                        "For Ollama models it is on/off: low/medium/high turn thinking on, minimal turns it off")
     p.add_argument("--max-tokens", type=int, default=4096,
                    help="reply length limit per call; thinking counts toward it, so raise it with --thinking")
+    p.add_argument("--llm-args", default="{}",
+                   help='extra litellm kwargs as JSON, e.g. \'{"top_p": 0.95, "top_k": 20}\' for Qwen3')
     p.add_argument("--memory", default="none", choices=sorted(MEMORIES))
     p.add_argument("--memory-args", default="{}", help='JSON kwargs, e.g. \'{"k": 3}\'')
     p.add_argument("--split", default="valid_seen", choices=["valid_seen", "valid_unseen", "train"])
@@ -49,6 +52,7 @@ def main():
     args = p.parse_args()
 
     extra = {"reasoning_effort": args.thinking} if args.thinking else {}
+    extra.update(json.loads(args.llm_args))
     llm = make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens, **extra)
     agent = SkillOSAgent(llm)
     env = ALFWorldEnv(split=args.split, max_steps=args.max_steps)

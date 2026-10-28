@@ -27,6 +27,7 @@ class Step:
     action: str                  # the action sent to the environment
     observation: str             # what the environment returned
     raw_output: str = ""         # full LLM output, for debugging
+    reasoning: str = ""          # the model's native thinking, if the provider returns it separately
 
 
 @dataclass

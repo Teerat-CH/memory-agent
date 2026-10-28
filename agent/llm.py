@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import random
 import re
+import time
 from dataclasses import dataclass, field
 
 
@@ -21,15 +22,17 @@ class Usage:
     reasoning_tokens: int = 0   # thinking tokens alone, if the provider reports them
     truncated: int = 0          # replies cut off by max_tokens (thinking counts toward it)
     cost_usd: float = 0.0
+    seconds: float = 0.0        # wall-clock time spent in calls (the useful cost for local models)
 
     def snapshot(self) -> dict:
         return dict(calls=self.calls, prompt_tokens=self.prompt_tokens,
                     completion_tokens=self.completion_tokens, reasoning_tokens=self.reasoning_tokens,
-                    truncated=self.truncated, cost_usd=round(self.cost_usd, 6))
+                    truncated=self.truncated, cost_usd=round(self.cost_usd, 6), seconds=round(self.seconds, 1))
 
     def diff(self, before: dict) -> dict:
         now = self.snapshot()
-        return {k: round(now[k] - before[k], 6) if k == "cost_usd" else now[k] - before[k] for k in now}
+        return {k: round(now[k] - before[k], 6) if isinstance(now[k], float) else now[k] - before[k]
+                for k in now}
 
 
 class LLM:
@@ -47,13 +50,17 @@ class LLM:
         self.num_retries = num_retries
         self.extra_kwargs = extra_kwargs
         self.usage = Usage()
+        self.last_reasoning = ""  # native thinking of the last reply, when returned apart from the text
 
     def chat(self, messages: list[dict], **kwargs) -> str:
         params = dict(model=self.model, messages=messages, temperature=self.temperature,
                       max_tokens=self.max_tokens, num_retries=self.num_retries)
         params.update(self.extra_kwargs)
         params.update(kwargs)
+        start = time.monotonic()
         resp = self._litellm.completion(**params)
+        self.usage.seconds += time.monotonic() - start
+        self.last_reasoning = getattr(resp.choices[0].message, "reasoning_content", None) or ""
         u = getattr(resp, "usage", None)
         self.usage.calls += 1
         if u is not None:
@@ -86,6 +93,7 @@ class FakeLLM:
         self.rng = random.Random(seed)
         self.model = "fake"
         self.usage = Usage()
+        self.last_reasoning = ""
 
     def chat(self, messages: list[dict], **kwargs) -> str:
         text = messages[-1]["content"]

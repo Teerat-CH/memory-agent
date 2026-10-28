@@ -1,0 +1,19 @@
+{
+  "model": "ollama_chat/qwen3:8b-fp16",
+  "temperature": 0.6,
+  "thinking": "high",
+  "max_tokens": 8192,
+  "llm_args": "{\"top_p\": 0.95, \"top_k\": 20}",
+  "memory": "none",
+  "memory_args": "{}",
+  "split": "valid_seen",
+  "max_steps": 30,
+  "seed": 0,
+  "limit": 3,
+  "out": "runs/smoke_qwen3_8b_fp16_think",
+  "task_order": [
+    "pick_and_place_simple-Candle-None-Toilet-429/trial_T20190908_052232_887934",
+    "pick_clean_then_place_in_recep-Cloth-None-Cabinet-405/trial_T20190907_080903_889497",
+    "pick_heat_then_place_in_recep-Plate-None-DiningTable-28/trial_T20190908_001247_096796"
+  ]
+}

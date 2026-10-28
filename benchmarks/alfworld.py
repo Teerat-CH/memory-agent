@@ -104,7 +104,8 @@ class ALFWorldEnv:
                     o, _, d, info = env.step([action])
                     new_obs, done, won = o[0].strip(), bool(d[0]), bool(info["won"][0])
                     admissible = info["admissible_commands"][0]
-                ep.steps.append(Step(thought=thought, action=action, observation=new_obs, raw_output=raw))
+                ep.steps.append(Step(thought=thought, action=action, observation=new_obs, raw_output=raw,
+                                     reasoning=agent.llm.last_reasoning))
                 obs = new_obs
                 if won:
                     ep.success = True

@@ -79,7 +79,8 @@ class SkillOSAgent:
         return [{"role": "user", "content": prompt}]
 
     def act(self, ep: Episode, obs: str, admissible: list[str]) -> tuple[str, str, str]:
-        """Choose the next action. Returns (thought, action, raw_output)."""
+        """Choose the next action. Returns (thought, action, raw_output).
+        A model's native thinking, if any, is left in `self.llm.last_reasoning`."""
         raw = self.llm.chat(self.build_messages(ep, obs, admissible))
         low = raw.lower()
         m = ACTION_RE.search(low)
