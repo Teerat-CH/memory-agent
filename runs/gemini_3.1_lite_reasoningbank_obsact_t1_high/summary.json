@@ -1,0 +1,43 @@
+{
+  "num_tasks": 140,
+  "success_rate": 0.5643,
+  "avg_steps": 18.77,
+  "errors": 0,
+  "by_task_type": {
+    "clean": {
+      "n": 27,
+      "success_rate": 0.5185
+    },
+    "cool": {
+      "n": 25,
+      "success_rate": 0.44
+    },
+    "examine": {
+      "n": 13,
+      "success_rate": 0.5385
+    },
+    "heat": {
+      "n": 16,
+      "success_rate": 0.25
+    },
+    "put": {
+      "n": 35,
+      "success_rate": 0.8286
+    },
+    "puttwo": {
+      "n": 24,
+      "success_rate": 0.5833
+    }
+  },
+  "memory_errors": 0,
+  "usage": {
+    "calls": 2908,
+    "prompt_tokens": 2555427,
+    "completion_tokens": 2310464,
+    "reasoning_tokens": 1934885,
+    "truncated": 0,
+    "cost_usd": 4.104553,
+    "seconds": 13685.3
+  },
+  "judge_accuracy": 0.95
+}

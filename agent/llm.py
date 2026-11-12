@@ -8,6 +8,7 @@ Set the provider's API key in the environment (GEMINI_API_KEY, OPENAI_API_KEY, .
 
 from __future__ import annotations
 
+import logging
 import random
 import re
 import time
@@ -43,6 +44,9 @@ class LLM:
         import litellm  # imported lazily so tests without litellm still work
 
         litellm.suppress_debug_info = True
+        # Hide litellm's per-call warnings (e.g. the Gemini 3 temperature deprecation notice) so logs
+        # stay one line per task; real failures still surface as exceptions.
+        logging.getLogger("LiteLLM").setLevel(logging.ERROR)
         self._litellm = litellm
         self.model = model
         self.temperature = temperature

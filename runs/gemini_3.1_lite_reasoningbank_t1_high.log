@@ -1,0 +1,183 @@
+[   1/140] ok   4 steps put      running SR=1.000  pick_and_place_simple-Candle-None-Toilet-429/trial_T20190908_052232_887934
+[   2/140] --  30 steps clean    running SR=0.500  pick_clean_then_place_in_recep-Cloth-None-Cabinet-405/trial_T20190907_080903_889497
+[   3/140] ok  14 steps heat     running SR=0.667  pick_heat_then_place_in_recep-Plate-None-DiningTable-28/trial_T20190908_001247_096796
+[   4/140] --  30 steps puttwo   running SR=0.500  pick_two_obj_and_place-Book-None-Desk-302/trial_T20190906_181233_363875
+[   5/140] ok  10 steps puttwo   running SR=0.600  pick_two_obj_and_place-CreditCard-None-Dresser-311/trial_T20190907_201917_045715
+[   6/140] ok   8 steps put      running SR=0.667  pick_and_place_simple-Watch-None-SideTable-222/trial_T20190909_051813_197569
+[   7/140] --  30 steps examine  running SR=0.571  look_at_obj_in_light-Box-None-DeskLamp-205/trial_T20190907_074425_330493
+[   8/140] ok   9 steps heat     running SR=0.625  pick_heat_then_place_in_recep-Potato-None-Fridge-12/trial_T20190908_014451_271080
+[   9/140] ok   8 steps put      running SR=0.667  pick_and_place_simple-Knife-None-SideTable-3/trial_T20190918_184236_557252
+[  10/140] --  30 steps puttwo   running SR=0.600  pick_two_obj_and_place-Book-None-Desk-313/trial_T20190908_125930_920681
+[  11/140] --  30 steps cool     running SR=0.545  pick_cool_then_place_in_recep-WineBottle-None-DiningTable-17/trial_T20190908_024426_412044
+[  12/140] --  30 steps cool     running SR=0.500  pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-16/trial_T20190908_184242_348366
+[  13/140] ok  15 steps put      running SR=0.538  pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032318_169393
+[  14/140] ok   8 steps puttwo   running SR=0.571  pick_two_obj_and_place-TissueBox-None-Toilet-426/trial_T20190909_044602_338962
+[  15/140] --  30 steps put      running SR=0.533  pick_and_place_simple-WineBottle-None-Shelf-7/trial_T20190907_200154_378982
+[  16/140] ok   6 steps put      running SR=0.562  pick_and_place_simple-Book-None-Sofa-229/trial_T20190907_042856_259139
+[  17/140] --  30 steps clean    running SR=0.529  pick_clean_then_place_in_recep-ButterKnife-None-CounterTop-8/trial_T20190909_105559_983897
+[  18/140] ok   7 steps puttwo   running SR=0.556  pick_two_obj_and_place-CD-None-Drawer-304/trial_T20190907_230232_832893
+[  19/140] ok   6 steps put      running SR=0.579  pick_and_place_simple-Tomato-None-Microwave-13/trial_T20190908_124829_632660
+[  20/140] --  30 steps examine  running SR=0.550  look_at_obj_in_light-CD-None-DeskLamp-320/trial_T20190907_224451_655673
+[  21/140] --  30 steps cool     running SR=0.524  pick_cool_then_place_in_recep-Plate-None-CounterTop-1/trial_T20190906_205324_559361
+[  22/140] --  30 steps put      running SR=0.500  pick_and_place_simple-CreditCard-None-Drawer-227/trial_T20190909_010644_297017
+[  23/140] ok  10 steps clean    running SR=0.522  pick_clean_then_place_in_recep-Fork-None-Drawer-8/trial_T20190908_132152_999725
+[  24/140] ok  22 steps clean    running SR=0.542  pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-16/trial_T20190909_114508_617301
+[  25/140] ok   6 steps put      running SR=0.560  pick_and_place_simple-Newspaper-None-Sofa-224/trial_T20190909_111324_949106
+[  26/140] ok  14 steps cool     running SR=0.577  pick_cool_then_place_in_recep-Cup-None-SideTable-21/trial_T20190906_192823_237997
+[  27/140] ok  25 steps puttwo   running SR=0.593  pick_two_obj_and_place-Newspaper-None-Drawer-224/trial_T20190911_101248_326533
+[  28/140] --  30 steps puttwo   running SR=0.571  pick_two_obj_and_place-Pan-None-CounterTop-14/trial_T20190907_012519_974044
+[  29/140] --  30 steps puttwo   running SR=0.552  pick_two_obj_and_place-Watch-None-Dresser-205/trial_T20190907_182211_592010
+[  30/140] ok   8 steps put      running SR=0.567  pick_and_place_simple-CreditCard-None-ArmChair-201/trial_T20190908_124340_258012
+[  31/140] --  30 steps cool     running SR=0.548  pick_cool_then_place_in_recep-Tomato-None-CounterTop-12/trial_T20190909_063844_274181
+[  32/140] ok   8 steps clean    running SR=0.562  pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653
+[  33/140] --  30 steps clean    running SR=0.545  pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002804_564168
+[  34/140] --  30 steps heat     running SR=0.529  pick_heat_then_place_in_recep-Potato-None-Fridge-11/trial_T20190909_011341_436523
+[  35/140] ok  12 steps puttwo   running SR=0.543  pick_two_obj_and_place-Glassbottle-None-Shelf-1/trial_T20190907_122204_941737
+[  36/140] ok   7 steps clean    running SR=0.556  pick_clean_then_place_in_recep-ButterKnife-None-Drawer-2/trial_T20190908_121728_511866
+[  37/140] --  30 steps examine  running SR=0.541  look_at_obj_in_light-CD-None-DeskLamp-302/trial_T20190907_154618_526741
+[  38/140] --  30 steps cool     running SR=0.526  pick_cool_then_place_in_recep-Apple-None-CounterTop-14/trial_T20190909_044933_815840
+[  39/140] ok  10 steps put      running SR=0.538  pick_and_place_simple-Box-None-Dresser-224/trial_T20190907_164104_229696
+[  40/140] --  30 steps heat     running SR=0.525  pick_heat_then_place_in_recep-Tomato-None-Fridge-15/trial_T20190909_020200_054379
+[  41/140] ok   4 steps examine  running SR=0.537  look_at_obj_in_light-Bowl-None-DeskLamp-316/trial_T20190908_230702_962704
+[  42/140] ok  10 steps put      running SR=0.548  pick_and_place_simple-ToiletPaper-None-ToiletPaperHanger-415/trial_T20190908_050518_595510
+[  43/140] --  30 steps heat     running SR=0.535  pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779
+[  44/140] --  30 steps heat     running SR=0.523  pick_heat_then_place_in_recep-Mug-None-Cabinet-3/trial_T20190909_014639_335717
+[  45/140] --  30 steps heat     running SR=0.511  pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-1/trial_T20190907_222640_487432
+[  46/140] --  30 steps cool     running SR=0.500  pick_cool_then_place_in_recep-Egg-None-Microwave-24/trial_T20190908_234112_645480
+[  47/140] ok  12 steps put      running SR=0.511  pick_and_place_simple-SoapBottle-None-CounterTop-417/trial_T20190910_112922_368384
+[  48/140] ok  27 steps put      running SR=0.521  pick_and_place_simple-CellPhone-None-ArmChair-318/trial_T20190909_120047_968274
+[  49/140] ok  25 steps cool     running SR=0.531  pick_cool_then_place_in_recep-Lettuce-None-CounterTop-1/trial_T20190908_042713_075616
+[  50/140] --  30 steps puttwo   running SR=0.520  pick_two_obj_and_place-SprayBottle-None-Cabinet-407/trial_T20190907_144556_144188
+[  51/140] ok  27 steps examine  running SR=0.529  look_at_obj_in_light-CD-None-DeskLamp-314/trial_T20190907_114323_767231
+[  52/140] ok   7 steps cool     running SR=0.538  pick_cool_then_place_in_recep-Apple-None-GarbageCan-2/trial_T20190906_195943_081289
+[  53/140] ok   7 steps clean    running SR=0.547  pick_clean_then_place_in_recep-Tomato-None-CounterTop-25/trial_T20190909_012550_586494
+[  54/140] --  30 steps clean    running SR=0.537  pick_clean_then_place_in_recep-Lettuce-None-CounterTop-16/trial_T20190909_051630_092360
+[  55/140] ok  15 steps clean    running SR=0.545  pick_clean_then_place_in_recep-Plate-None-CounterTop-19/trial_T20190908_212725_836398
+[  56/140] --  30 steps puttwo   running SR=0.536  pick_two_obj_and_place-Box-None-CoffeeTable-213/trial_T20190906_200927_069627
+[  57/140] --  30 steps cool     running SR=0.526  pick_cool_then_place_in_recep-Pan-None-StoveBurner-18/trial_T20190906_181023_216915
+[  58/140] --  30 steps cool     running SR=0.517  pick_cool_then_place_in_recep-Tomato-None-CounterTop-12/trial_T20190909_063754_216554
+[  59/140] ok   7 steps put      running SR=0.525  pick_and_place_simple-SoapBar-None-Cart-401/trial_T20190907_054906_608944
+[  60/140] ok  22 steps clean    running SR=0.533  pick_clean_then_place_in_recep-Ladle-None-CounterTop-14/trial_T20190909_113844_191747
+[  61/140] ok  10 steps clean    running SR=0.541  pick_clean_then_place_in_recep-ButterKnife-None-Drawer-8/trial_T20190909_124425_112757
+[  62/140] ok   4 steps put      running SR=0.548  pick_and_place_simple-CellPhone-None-Bed-324/trial_T20190907_233817_198528
+[  63/140] ok   8 steps puttwo   running SR=0.556  pick_two_obj_and_place-SoapBar-None-GarbageCan-418/trial_T20190909_055538_380023
+[  64/140] ok   6 steps put      running SR=0.562  pick_and_place_simple-Bowl-None-CoffeeTable-201/trial_T20190907_171639_045329
+[  65/140] ok  17 steps put      running SR=0.569  pick_and_place_simple-SprayBottle-None-Cabinet-413/trial_T20190907_114931_692464
+[  66/140] ok   4 steps put      running SR=0.576  pick_and_place_simple-SprayBottle-None-GarbageCan-409/trial_T20190908_054742_818364
+[  67/140] ok   5 steps put      running SR=0.582  pick_and_place_simple-Book-None-SideTable-329/trial_T20190908_050633_745514
+[  68/140] --  30 steps clean    running SR=0.574  pick_clean_then_place_in_recep-Ladle-None-DiningTable-27/trial_T20190911_131350_027076
+[  69/140] ok   7 steps clean    running SR=0.580  pick_clean_then_place_in_recep-Lettuce-None-Fridge-19/trial_T20190908_100138_446072
+[  70/140] --  30 steps heat     running SR=0.571  pick_heat_then_place_in_recep-Cup-None-Cabinet-22/trial_T20190907_173251_960848
+[  71/140] ok  11 steps puttwo   running SR=0.577  pick_two_obj_and_place-ToiletPaper-None-Toilet-408/trial_T20190909_080302_174780
+[  72/140] --  30 steps cool     running SR=0.569  pick_cool_then_place_in_recep-Pan-None-StoveBurner-23/trial_T20190906_215856_374127
+[  73/140] --  30 steps clean    running SR=0.562  pick_clean_then_place_in_recep-Fork-None-CounterTop-23/trial_T20190908_233922_171295
+[  74/140] --  30 steps clean    running SR=0.554  pick_clean_then_place_in_recep-SoapBar-None-Cabinet-402/trial_T20190908_055221_984342
+[  75/140] --  30 steps heat     running SR=0.547  pick_heat_then_place_in_recep-Tomato-None-Fridge-23/trial_T20190909_082320_103350
+[  76/140] ok   6 steps put      running SR=0.553  pick_and_place_simple-Pencil-None-Desk-310/trial_T20190909_113054_894334
+[  77/140] ok   4 steps put      running SR=0.558  pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032340_274147
+[  78/140] ok  11 steps puttwo   running SR=0.564  pick_two_obj_and_place-RemoteControl-None-Ottoman-203/trial_T20190906_182952_858723
+[  79/140] --  30 steps put      running SR=0.557  pick_and_place_simple-Egg-None-Microwave-4/trial_T20190906_234406_356490
+[  80/140] ok   4 steps examine  running SR=0.562  look_at_obj_in_light-Laptop-None-DeskLamp-328/trial_T20190908_201550_622420
+[  81/140] ok   4 steps put      running SR=0.568  pick_and_place_simple-TissueBox-None-Toilet-426/trial_T20190910_155319_795672
+[  82/140] ok  15 steps put      running SR=0.573  pick_and_place_simple-Pencil-None-Dresser-330/trial_T20190909_071128_012892
+[  83/140] ok   8 steps puttwo   running SR=0.578  pick_two_obj_and_place-Vase-None-Desk-204/trial_T20190906_181531_703961
+[  84/140] --  30 steps clean    running SR=0.571  pick_clean_then_place_in_recep-Ladle-None-DiningTable-4/trial_T20190909_164840_568811
+[  85/140] --  30 steps heat     running SR=0.565  pick_heat_then_place_in_recep-Apple-None-DiningTable-26/trial_T20190907_060234_011675
+[  86/140] --  30 steps examine  running SR=0.558  look_at_obj_in_light-AlarmClock-None-DeskLamp-323/trial_T20190909_044715_250790
+[  87/140] --  30 steps cool     running SR=0.552  pick_cool_then_place_in_recep-Bread-None-CounterTop-7/trial_T20190909_045605_307949
+[  88/140] --  30 steps cool     running SR=0.545  pick_cool_then_place_in_recep-Lettuce-None-CounterTop-11/trial_T20190908_222555_651605
+[  89/140] ok  22 steps clean    running SR=0.551  pick_clean_then_place_in_recep-ButterKnife-None-Drawer-30/trial_T20190908_052007_212776
+[  90/140] ok  16 steps examine  running SR=0.556  look_at_obj_in_light-Statue-None-DeskLamp-216/trial_T20190909_193045_208933
+[  91/140] --  30 steps examine  running SR=0.549  look_at_obj_in_light-Bowl-None-DeskLamp-301/trial_T20190909_150719_492274
+[  92/140] ok   9 steps cool     running SR=0.554  pick_cool_then_place_in_recep-Tomato-None-Microwave-13/trial_T20190910_173916_331859
+[  93/140] ok  27 steps examine  running SR=0.559  look_at_obj_in_light-KeyChain-None-DeskLamp-327/trial_T20190906_202601_548273
+[  94/140] ok   4 steps put      running SR=0.564  pick_and_place_simple-RemoteControl-None-Sofa-207/trial_T20190909_153609_373481
+[  95/140] ok  12 steps puttwo   running SR=0.568  pick_two_obj_and_place-ToiletPaper-None-Drawer-423/trial_T20190907_111251_461099
+[  96/140] --  30 steps clean    running SR=0.562  pick_clean_then_place_in_recep-DishSponge-None-CounterTop-403/trial_T20190908_144357_621068
+[  97/140] --  30 steps clean    running SR=0.557  pick_clean_then_place_in_recep-Ladle-None-DiningTable-16/trial_T20190909_183724_205399
+[  98/140] ok  24 steps clean    running SR=0.561  pick_clean_then_place_in_recep-SoapBar-None-Drawer-423/trial_T20190906_202340_749336
+[  99/140] ok   5 steps put      running SR=0.566  pick_and_place_simple-Mug-None-Dresser-311/trial_T20190909_152837_739016
+[ 100/140] ok  27 steps cool     running SR=0.570  pick_cool_then_place_in_recep-Cup-None-Microwave-17/trial_T20190906_192817_654400
+[ 101/140] ok  10 steps cool     running SR=0.574  pick_cool_then_place_in_recep-Apple-None-Microwave-5/trial_T20190908_150807_823817
+[ 102/140] ok   4 steps put      running SR=0.578  pick_and_place_simple-SprayBottle-None-Toilet-418/trial_T20190906_190942_706186
+[ 103/140] ok   8 steps puttwo   running SR=0.583  pick_two_obj_and_place-SoapBar-None-GarbageCan-418/trial_T20190909_055649_717880
+[ 104/140] ok   5 steps put      running SR=0.587  pick_and_place_simple-Vase-None-CoffeeTable-207/trial_T20190909_091246_807206
+[ 105/140] --  30 steps heat     running SR=0.581  pick_heat_then_place_in_recep-Tomato-None-DiningTable-16/trial_T20190907_201243_698086
+[ 106/140] ok   8 steps clean    running SR=0.585  pick_clean_then_place_in_recep-SoapBar-None-Toilet-410/trial_T20190906_201106_979461
+[ 107/140] --  30 steps clean    running SR=0.579  pick_clean_then_place_in_recep-Ladle-None-CounterTop-8/trial_T20190909_121908_219603
+[ 108/140] ok   5 steps put      running SR=0.583  pick_and_place_simple-ToiletPaper-None-ToiletPaperHanger-406/trial_T20190908_122858_883968
+[ 109/140] --  30 steps cool     running SR=0.578  pick_cool_then_place_in_recep-Pan-None-DiningTable-7/trial_T20190908_232648_241836
+[ 110/140] ok  20 steps heat     running SR=0.582  pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973
+[ 111/140] --  30 steps examine  running SR=0.577  look_at_obj_in_light-Pillow-None-DeskLamp-302/trial_T20190909_150916_682139
+[ 112/140] --  30 steps cool     running SR=0.571  pick_cool_then_place_in_recep-Pot-None-DiningTable-21/trial_T20190909_004531_429065
+[ 113/140] ok   8 steps puttwo   running SR=0.575  pick_two_obj_and_place-SprayBottle-None-Toilet-429/trial_T20190907_033843_707544
+[ 114/140] ok   4 steps put      running SR=0.579  pick_and_place_simple-SprayBottle-None-Toilet-415/trial_T20190909_075955_678702
+[ 115/140] ok  10 steps put      running SR=0.583  pick_and_place_simple-Candle-None-Toilet-407/trial_T20190909_055248_059513
+[ 116/140] --  30 steps heat     running SR=0.578  pick_heat_then_place_in_recep-Tomato-None-Fridge-24/trial_T20190908_033721_967359
+[ 117/140] ok   8 steps puttwo   running SR=0.581  pick_two_obj_and_place-SprayBottle-None-GarbageCan-419/trial_T20190908_164236_518264
+[ 118/140] --  30 steps puttwo   running SR=0.576  pick_two_obj_and_place-SprayBottle-None-Toilet-402/trial_T20190910_222914_814642
+[ 119/140] ok   8 steps cool     running SR=0.580  pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173120_350651
+[ 120/140] --  30 steps clean    running SR=0.575  pick_clean_then_place_in_recep-Plate-None-Fridge-5/trial_T20190909_112854_740612
+[ 121/140] ok   8 steps puttwo   running SR=0.579  pick_two_obj_and_place-AlarmClock-None-Dresser-305/trial_T20190907_165826_194855
+[ 122/140] ok   4 steps put      running SR=0.582  pick_and_place_simple-RemoteControl-None-ArmChair-230/trial_T20190909_021000_274398
+[ 123/140] --  30 steps heat     running SR=0.577  pick_heat_then_place_in_recep-Egg-None-CounterTop-2/trial_T20190908_122951_021026
+[ 124/140] ok  16 steps cool     running SR=0.581  pick_cool_then_place_in_recep-Bowl-None-Cabinet-20/trial_T20190909_112912_154874
+[ 125/140] --  30 steps examine  running SR=0.576  look_at_obj_in_light-Vase-None-DeskLamp-303/trial_T20190907_150418_457594
+[ 126/140] --  30 steps cool     running SR=0.571  pick_cool_then_place_in_recep-Tomato-None-GarbageCan-6/trial_T20190909_082934_483899
+[ 127/140] --  30 steps put      running SR=0.567  pick_and_place_simple-Candle-None-Cart-401/trial_T20190909_081908_677973
+[ 128/140] ok  12 steps clean    running SR=0.570  pick_clean_then_place_in_recep-SoapBar-None-Toilet-428/trial_T20190907_041436_588106
+[ 129/140] ok   5 steps put      running SR=0.574  pick_and_place_simple-SoapBottle-None-Cabinet-414/trial_T20190908_110131_524518
+[ 130/140] --  30 steps clean    running SR=0.569  pick_clean_then_place_in_recep-DishSponge-None-Cart-401/trial_T20190907_024634_972453
+[ 131/140] ok   8 steps cool     running SR=0.573  pick_cool_then_place_in_recep-Plate-None-Cabinet-7/trial_T20190907_231206_512424
+[ 132/140] ok  10 steps puttwo   running SR=0.576  pick_two_obj_and_place-CreditCard-None-Safe-323/trial_T20190907_001129_214240
+[ 133/140] --  30 steps cool     running SR=0.571  pick_cool_then_place_in_recep-Apple-None-Microwave-19/trial_T20190906_210937_878489
+[ 134/140] --  30 steps heat     running SR=0.567  pick_heat_then_place_in_recep-Egg-None-Fridge-14/trial_T20190909_091314_636733
+[ 135/140] --  30 steps puttwo   running SR=0.563  pick_two_obj_and_place-Knife-None-Drawer-18/trial_T20190907_065232_689984
+[ 136/140] ok  10 steps puttwo   running SR=0.566  pick_two_obj_and_place-Spatula-None-Drawer-13/trial_T20190908_183331_203888
+[ 137/140] ok   9 steps clean    running SR=0.569  pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-26/trial_T20190907_233056_022802
+[ 138/140] ok   7 steps examine  running SR=0.572  look_at_obj_in_light-Pillow-None-DeskLamp-323/trial_T20190908_053153_077977
+[ 139/140] ok  24 steps heat     running SR=0.576  pick_heat_then_place_in_recep-Mug-None-SideTable-21/trial_T20190909_090729_088825
+[ 140/140] ok   9 steps cool     running SR=0.579  pick_cool_then_place_in_recep-Tomato-None-Microwave-18/trial_T20190909_012524_159092
+{
+  "num_tasks": 140,
+  "success_rate": 0.5786,
+  "avg_steps": 18.86,
+  "errors": 0,
+  "by_task_type": {
+    "clean": {
+      "n": 27,
+      "success_rate": 0.5185
+    },
+    "cool": {
+      "n": 25,
+      "success_rate": 0.4
+    },
+    "examine": {
+      "n": 13,
+      "success_rate": 0.4615
+    },
+    "heat": {
+      "n": 16,
+      "success_rate": 0.25
+    },
+    "put": {
+      "n": 35,
+      "success_rate": 0.8857
+    },
+    "puttwo": {
+      "n": 24,
+      "success_rate": 0.6667
+    }
+  },
+  "memory_errors": 0,
+  "usage": {
+    "calls": 2920,
+    "prompt_tokens": 3048837,
+    "completion_tokens": 2530590,
+    "reasoning_tokens": 2126692,
+    "truncated": 0,
+    "cost_usd": 4.558094,
+    "seconds": 14058.3
+  },
+  "judge_accuracy": 0.9357
+}

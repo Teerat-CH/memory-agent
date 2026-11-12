@@ -10,10 +10,12 @@ Sources, cited as tags in the comments below:
 ReasoningBank itself was only evaluated on web and SWE tasks, so a few details have no
 ALFWorld source. They are marked ADAPTED.
 
-Two variants (--memory-args '{"variant": ...}'):
-  "skillos"  BM25 over memory items, top 5 [SkillOS]. Compare with SkillOS's ReasoningBank rows.
-  "paper"    embed each task with gemini-embedding-001, cosine similarity, take all items of the
-             top-1 most similar past task, plus ReasoningBank's memory instruction [RB-paper A.2, RB-code].
+Three variants (--memory-args '{"variant": ...}'):
+  "skillos"       BM25 over memory items, top 5 [SkillOS]. Items shown as title + content.
+  "skillos_task"  BM25 over past task instructions; the best-matching tasks' items, up to 5 [SkillOS
+                  top-5 BM25; RB-paper retrieval by task]. Items shown SKILL.md-style, with description.
+  "paper"         embed each task with gemini-embedding-001, cosine similarity, take all items of the
+                  top-1 most similar past task, plus ReasoningBank's memory instruction [RB-paper A.2, RB-code].
 
 Per task:
   retrieve  as above
@@ -22,6 +24,8 @@ Per task:
                judge="gt" uses ALFWorld's won flag instead, an oracle [RB-code --criteria gt].
             2. extract: at most 3 items {title, description, content} with the success or failure
                prompt at temperature 1.0, the judge's rationale appended [RB-code induce_memory.py].
+               The trajectory shown is observations and actions, as SkillOS defines it [SkillOS 3.1]
+               (ADAPTED: RB-code shows thoughts and actions).
             3. consolidate: append, no pruning [RB-paper A.2].
 """
 
@@ -125,8 +129,9 @@ EMBED_INSTRUCTION = ("Given the prior household task queries, your task is to an
                      "and select relevant prior queries that could help resolve it.")
 
 VARIANTS = {
-    "skillos": {"retrieval": "bm25", "k": 5},      # k = memory items
-    "paper": {"retrieval": "embedding", "k": 1},   # k = past tasks, all of whose items are returned
+    "skillos": {"retrieval": "bm25", "k": 5},            # k = memory items
+    "skillos_task": {"retrieval": "bm25_task", "k": 5},  # k = memory items, taken task by task
+    "paper": {"retrieval": "embedding", "k": 1},         # k = past tasks, all of whose items are returned
 }
 
 ITEM_RE = re.compile(r"##\s*Title\s*(.*?)\s*##\s*Description\s*(.*?)\s*##\s*Content\s*(.*?)\s*(?=#\s*Memory Item|```|\Z)",
@@ -148,32 +153,59 @@ class ReasoningBank(Memory):
         # One entry per finished task [RB-paper A.2 "ReasoningBank Storage"]:
         # {task_id, query, status, rationale, items: [{title, description, content}], embedding}
         self.entries: list[dict] = []
+        self._retrieved_from: list[str] = []  # task_ids of the items shown for the current task
 
     # ------------------------------------------------------------------ retrieve
     def retrieve(self, task: Task) -> str:
         if self.retrieval == "bm25":
-            items = self._bm25(task.instruction)
+            pairs = self._bm25(task.instruction)
+        elif self.retrieval == "bm25_task":
+            pairs = self._bm25_task(task.instruction)
         else:
-            items = self._by_embedding(task.instruction)
-        if not items:
+            pairs = self._by_embedding(task.instruction)
+        self._retrieved_from = [e["task_id"] for e, _ in pairs]
+        if not pairs:
             return ""
-        # [RB-paper A.2] "each item represented by its title and content".
-        text = "\n\n".join(f"### {it['title']}\n{it['content']}" for it in items)
+        if self.variant == "skillos_task":
+            # ADAPTED: SkillOS gives every method "the same memory interface" [SkillOS B.3.2], and its
+            # skills are SKILL.md files: a name + description frontmatter, then the body [SkillOS 3.1, Fig. 7].
+            text = "\n\n".join(f"---\nname: {it['title']}\ndescription: {it['description']}\n---\n{it['content']}"
+                               for _, it in pairs)
+        else:
+            # [RB-paper A.2] "each item represented by its title and content".
+            text = "\n\n".join(f"### {it['title']}\n{it['content']}" for _, it in pairs)
         return f"{RB_INSTRUCTION}\n\n{text}" if self.variant == "paper" else text
 
-    def _bm25(self, query: str) -> list[dict]:
+    def _bm25(self, query: str) -> list[tuple[dict, dict]]:
         # [SkillOS] top-k BM25, as rank_bm25's get_top_n (no score cutoff).
         # ADAPTED: documents are each item's title + description + content; the query is the task instruction.
         from rank_bm25 import BM25Okapi
 
-        items = [it for e in self.entries for it in e["items"]]
-        if not items:
+        pairs = [(e, it) for e in self.entries for it in e["items"]]
+        if not pairs:
             return []
-        tok = lambda s: re.findall(r"\w+", s.lower())
-        bm25 = BM25Okapi([tok(f"{it['title']} {it['description']} {it['content']}") for it in items])
-        return bm25.get_top_n(tok(query), items, n=self.k)
+        bm25 = BM25Okapi([_tok(f"{it['title']} {it['description']} {it['content']}") for _, it in pairs])
+        return bm25.get_top_n(_tok(query), pairs, n=self.k)
 
-    def _by_embedding(self, query: str) -> list[dict]:
+    def _bm25_task(self, query: str) -> list[tuple[dict, dict]]:
+        # [SkillOS] top-k BM25 with k = 5 items; [RB-paper A.2, RB-code] retrieval by past-task similarity.
+        # ADAPTED: documents are past task instructions; items are taken from the best-matching tasks,
+        # all of a task's items at a time, until k are collected. Ties keep the earlier task first.
+        from rank_bm25 import BM25Okapi
+
+        pool = [e for e in self.entries if e["items"]]
+        if not pool:
+            return []
+        scores = BM25Okapi([_tok(e["query"]) for e in pool]).get_scores(_tok(query))
+        ranked = [e for _, e in sorted(zip(scores, pool), key=lambda p: -p[0])]
+        pairs = []
+        for e in ranked:
+            pairs.extend((e, it) for it in e["items"])
+            if len(pairs) >= self.k:
+                break
+        return pairs[: self.k]
+
+    def _by_embedding(self, query: str) -> list[tuple[dict, dict]]:
         # [RB-code] memory_management.py: past queries are embedded as documents; the current
         # query is embedded with an instruction prefix; rank by cosine; top-k tasks' items.
         pool = [e for e in self.entries if e["items"] and e.get("embedding")]
@@ -181,7 +213,7 @@ class ReasoningBank(Memory):
             return []
         q = self.llm.embed([f"Instruct: {EMBED_INSTRUCTION}\nQuery: {query}"], model=self.embed_model)[0]
         ranked = sorted(pool, key=lambda e: _cosine(q, e["embedding"]), reverse=True)
-        return [it for e in ranked[: self.k] for it in e["items"]]
+        return [(e, it) for e in ranked[: self.k] for it in e["items"]]
 
     # -------------------------------------------------------------------- update
     def update(self, episode: Episode) -> None:
@@ -192,11 +224,17 @@ class ReasoningBank(Memory):
             success, rationale = episode.success, ""
         else:
             success, rationale = self._judge(episode)
-        episode.judge = {"success": success, "rationale": rationale, "source": self.judge}
+        episode.judge = {"success": success, "rationale": rationale, "source": self.judge,
+                         "retrieved_from": self._retrieved_from}
 
-        # 2. Extraction [RB-code induce_memory.py]: think/action pairs only, no observations.
-        steps = [s for s in episode.steps if s.action]
-        trajectory = "\n\n".join(f"<think>\n{s.thought}\n</think>\n<action>\n{s.action}\n</action>" for s in steps)
+        # 2. Extraction. ADAPTED: RB-code (induce_memory.py) passes think/action pairs without observations,
+        # because WebArena's are huge. We use SkillOS's trajectory xi = {o1, a1, ..., on, an} [SkillOS 3.1]:
+        # ALFWorld's observations are short and are the only record of what each action did.
+        parts = [f"<observation>\n{episode.initial_observation}\n</observation>"]
+        for s in episode.steps:
+            if s.action:
+                parts.append(f"<action>\n{s.action}\n</action>\n<observation>\n{s.observation}\n</observation>")
+        trajectory = "\n\n".join(parts)
         prompt = f"**Query:** {query}\n\n**Trajectory:**\n{trajectory}"
         if rationale:
             prompt += f"\n\nThe task {'succeeded' if success else 'failed'} because: {rationale}"
@@ -204,6 +242,7 @@ class ReasoningBank(Memory):
                              {"role": "user", "content": prompt}], temperature=1.0)
         items = [{"title": t.strip(), "description": d.strip(), "content": c.strip()}
                  for t, d, c in ITEM_RE.findall(raw)][:3]
+        episode.judge.update(items=items, extraction_raw=raw)  # saved to episodes.jsonl for auditing
 
         # 3. Consolidation: append [RB-paper A.2].
         entry = {"task_id": episode.task.id, "query": query, "status": "success" if success else "fail",
@@ -231,6 +270,10 @@ class ReasoningBank(Memory):
             f = re.search(r'"success"\s*:\s*(true|false)', raw, re.I)
             verdict = {"success": bool(f and f.group(1).lower() == "true"), "rationale": raw.strip()[:500]}
         return bool(verdict["success"]), str(verdict.get("rationale", ""))
+
+
+def _tok(s: str) -> list[str]:
+    return re.findall(r"\w+", s.lower())
 
 
 def _cosine(a: list[float], b: list[float]) -> float:
